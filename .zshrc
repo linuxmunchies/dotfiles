@@ -12,8 +12,6 @@ HISTFILE=~/.zsh_history # Path to the history file
 HISTSIZE=20000          # Maximum number of events stored in internal history
 SAVEHIST=20000          # Maximum number of events saved to HISTFILE
 
-# Conditional Check. It ensures the alias is only created if your current terminal is Kitty.
-[[ "$TERM" == "xterm-kitty" ]] && alias ssh="TERM=xterm-256color ssh"
 
 # Define colors for use in custom scripts
 export RED='\033[0;31m'
