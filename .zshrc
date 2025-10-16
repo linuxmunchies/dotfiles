@@ -46,12 +46,12 @@ export EDITOR=nvim
 [[ "$TERM" == "xterm-kitty" ]] && alias ssh="TERM=xterm-256color ssh"
 
 # General Aliases
+alias ll='eza -lha --group-directories-first'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias zshrc="nvim ~/.zshrc"
 alias c='clear'
 alias ..='cd ..'
-alias ll='ls -lha'
 alias la='ls -A'
 
 # --- Distro-Aware Package Management Aliases ---
