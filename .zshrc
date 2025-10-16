@@ -47,12 +47,11 @@ export EDITOR=nvim
 
 # General Aliases
 alias ls='ls --color=auto'
+alias list='eza -lha --icons --sort=modified --octal-permissions --group-directories-first' # Use eza instead with column info.
+alias copy="cp -iv"
+alias move="mv -iv"
 alias grep='grep --color=auto'
 alias zshrc="nvim ~/.zshrc"
-alias c='clear'
-alias ..='cd ..'
-alias ll='eza -lha --icons --sort=modified --octal-permissions --group-directories-first' # Use eza instead with column info.
-alias la='ls -A'
 
 # --- Distro-Aware Package Management Aliases ---
 # Detects the OS and sets aliases accordingly.
