@@ -12,7 +12,6 @@ HISTFILE=~/.zsh_history # Path to the history file
 HISTSIZE=20000          # Maximum number of events stored in internal history
 SAVEHIST=20000          # Maximum number of events saved to HISTFILE
 
-
 # Define colors for use in custom scripts
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
@@ -40,6 +39,9 @@ bindkey '^[[D' backward-char         # LeftArrow
 # ALIASES, FUNCTIONS, AND ENVIRONMENT
 #------------------------------------------------------------------------------
 
+# Discord Bot Launcher
+alias fenchibot="cd ~/dev/discordbot && source .venv/bin/activate && python bot3.py"
+
 # Environment Variables
 export EDITOR=nvim
 # Use correct TERM variable for SSH sessions from Kitty
@@ -47,11 +49,13 @@ export EDITOR=nvim
 
 # General Aliases
 alias ls='ls --color=auto'
-alias list='eza -lha --icons --sort=modified --octal-permissions --group-directories-first' # Use eza instead with column info.
-alias copy="cp -iv"
-alias move="mv -iv"
 alias grep='grep --color=auto'
-alias zshrc="nvim ~/.zshrc"
+alias ll='ls -lha'
+alias la='ls -A'
+alias copy='cp -iv'
+alias move='mv -iv'
+alias remove='rm -iv'
+alias list='lsd'
 
 # --- Distro-Aware Package Management Aliases ---
 # Detects the OS and sets aliases accordingly.
@@ -86,8 +90,18 @@ take() {
 #------------------------------------------------------------------------------
 # PROMPT
 #------------------------------------------------------------------------------
-# Example: ~/Projects/my-project %
-PROMPT='%F{blue}%~%f %# '
+# 1. Enable variable substitution in the prompt
+setopt prompt_subst
+
+# 2. Load version control information
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+# 3. Format the git information: (branchname) in green
+zstyle ':vcs_info:git:*' formats ' %F{green}(%b)%f'
+
+#    %n = user, %~ = path, ${vcs_info...} = git branch
+PROMPT='%F{yellow}%n%f@%F{magenta}%~%f${vcs_info_msg_0_}$ '
 
 #------------------------------------------------------------------------------
 # COMPLETION SYSTEM
@@ -266,4 +280,5 @@ obsidian_sync() {
     fi
     return 0
 }
+
 
